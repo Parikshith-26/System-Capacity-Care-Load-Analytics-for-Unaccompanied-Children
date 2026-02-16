@@ -1,151 +1,163 @@
-System Capacity & Care Load Analytics for Unaccompanied Children
-Live Dashboard
+# System Capacity & Care Load Analytics for Unaccompanied Children
+
+## Live Dashboard
 
 🔗 https://system-capacity-care-load-analytics-for-unaccompanied-children.streamlit.app/
 
-Project Overview
+---
 
-The Unaccompanied Alien Children (UAC) Program is a federally mandated care pipeline in which children apprehended by border authorities are transferred to the Department of Health and Human Services (HHS) for medical screening, sheltering, and reunification.
+## Project Overview
 
-This project builds an operational healthcare analytics framework to monitor system capacity, load pressure, and sustainability of care delivery over time.
+The **Unaccompanied Alien Children (UAC) Program** is a federally mandated care pipeline in which children apprehended by border authorities are transferred to the Department of Health and Human Services (HHS) for medical screening, sheltering, and reunification.
 
-Instead of simple visualization, the dashboard models the program as a dynamic service system consisting of:
+This project develops an **operational healthcare analytics framework** to monitor system capacity, intake pressure, and sustainability of care delivery over time.
 
-Intake (CBP Custody)
+Rather than simple visualization, the system models the program as a **dynamic service pipeline** consisting of:
 
-Transfer to shelters (HHS Care)
+* Intake into CBP custody
+* Transfer into HHS shelters
+* Discharge to sponsors
+* Capacity stabilization
 
-Discharge to sponsors
+The dashboard provides decision-support visibility into overcrowding risk, backlog formation, and operational strain periods.
 
-Capacity stabilization
+---
 
-The objective is to help stakeholders identify overcrowding risk, backlog formation, and operational strain periods.
+## Objectives
 
-Objectives
-Primary
+### Primary
 
-Measure total system care responsibility
+* Quantify total children under care across the system
+* Analyze inflow vs outflow balance
+* Identify capacity stress windows
 
-Monitor inflow vs outflow imbalance
+### Secondary
 
-Detect capacity strain windows
+* Support staffing and shelter planning
+* Improve situational awareness
+* Enable policy-level evaluation
 
-Secondary
+---
 
-Improve situational awareness
-
-Support staffing & shelter planning
-
-Enable policy-level decision analysis
-
-Dataset
+## Dataset
 
 Daily operational records (2023–2025):
 
-Column	Description
-Date	Reporting date
-apprehended	Children entering CBP custody
-cbp_custody	Children held at border facilities
-transferred	Moved into HHS care
-hhs_care	Children in shelters
-discharged	Released to sponsors
-Analytical Methodology
-1. Time-Series Structuring
+| Column      | Description                        |
+| ----------- | ---------------------------------- |
+| Date        | Reporting date                     |
+| apprehended | Children entering CBP custody      |
+| cbp_custody | Children held at border facilities |
+| transferred | Moved into HHS care                |
+| hhs_care    | Children in shelters               |
+| discharged  | Released to sponsors               |
 
-Converted to continuous daily timeline
+---
 
-Missing reporting days reconstructed
+## Analytical Methodology
 
-State variables forward-filled
+### 1. Time-Series Structuring
 
-Flow variables zero-filled
+* Converted to continuous daily timeline
+* Missing reporting days reconstructed
+* State variables forward-filled
+* Flow variables zero-filled
 
-2. Data Validation
+### 2. Data Validation
 
-Transfer ≤ CBP custody constraint
+* Transfer ≤ CBP custody constraint
+* Discharge ≤ HHS care constraint
+* Reporting anomaly detection
 
-Discharge ≤ HHS care constraint
+### 3. Derived Capacity Metrics
 
-Reporting anomaly detection
+| Metric           | Meaning                        |
+| ---------------- | ------------------------------ |
+| Total Load       | Government care responsibility |
+| Net Intake       | System pressure indicator      |
+| Growth Rate      | Expansion stress               |
+| Backlog Streak   | Sustained overload             |
+| Volatility Index | Operational instability        |
+| Discharge Ratio  | System efficiency              |
 
-3. Derived Capacity Metrics
-Metric	Meaning
-Total Load	Government care responsibility
-Net Intake	System pressure indicator
-Growth Rate	Expansion stress
-Backlog Streak	Sustained overload
-Volatility Index	Operational instability
-Discharge Ratio	System efficiency
-4. Stress Detection
+### 4. Stress Detection
 
-System considered under strain when:
+The system is considered under strain when:
 
-Positive intake pressure
+* Net intake pressure is positive
+* Load volatility is high
+* Backlog persists over time
 
-High volatility
+---
 
-Sustained backlog
+## Dashboard Features
 
-Dashboard Features
-Core Modules
+### Core Modules
 
-System Load Overview
+* System Load Overview
+* CBP vs HHS Capacity Comparison
+* Intake Pressure & Backlog Trends
+* KPI Monitoring Panel
 
-CBP vs HHS Capacity Comparison
+### Interactive Controls
 
-Intake Pressure & Backlog Trends
+* Date range filter
+* Daily / Weekly / Monthly aggregation
+* Metric selector
 
-KPI Monitoring Panel
+---
 
-Interactive Controls
+## Technology Stack
 
-Date range filter
+* Python
+* Pandas
+* Plotly
+* Streamlit
+* Time-Series Analysis
 
-Daily / Weekly / Monthly aggregation
+---
 
-Metric selector
+## Key Insights Generated
 
-Technology Stack
+The dashboard helps stakeholders identify:
 
-Python
+* Overcrowding periods
+* Recovery phases
+* Care throughput efficiency
+* Sustainability of operations
 
-Pandas
+---
 
-Plotly
+## How to Run Locally
 
-Streamlit
-
-Time-Series Analysis
-
-Key Insights Generated
-
-The dashboard helps identify:
-
-Overcrowding periods
-
-Recovery phases
-
-Care throughput efficiency
-
-Sustainability of operations
-
-How to Run Locally
+```bash
 git clone https://github.com/<your-username>/uac-care-analytics.git
 cd uac-care-analytics
 
 pip install -r requirements.txt
 streamlit run app.py
-Project Structure
+```
+
+---
+
+## Project Structure
+
+```
 uac-care-analytics/
 │── app.py
 │── analysis.py
 │── processed.csv
 │── requirements.txt
 │── data/uac_cleaned.csv
+```
 
-Author
+---
 
-Parikshith V M
+## Author
+
+**Parikshith**
 Business Analyst | Data Analytics & Decision Systems
 
 This project was developed as part of a healthcare operations analytics study focused on capacity monitoring, system stability, and policy-level decision support using time-series data and interactive visualization tools.
+
+
